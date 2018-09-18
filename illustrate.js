@@ -56,14 +56,14 @@ d3.csv("devdata.csv",rowDev, function(data){
 	.attr("transform", "translate(" + padding + ",0)")
 	.call(yAxis);
     svg.append("text")
-	.attr("class","axis-label")
+	.attr("class","axislabel")
 	.attr("transform", "translate("+margin+","+0.5*h+") rotate(-90)")
 	.attr("x",0)
 	.attr("y",0)
 	.attr("text-anchor","middle")
 	.text("Discrepancy");
     svg.append("text")
-	.attr("class","axis-label")
+	.attr("class","axislabel")
 	.attr("x",0.5*w)
 	.attr("y",h-margin)
 	.attr("text-anchor","middle")
@@ -110,7 +110,7 @@ d3.csv("devdata.csv",rowDev, function(data){
 	    .attr("transform", "translate("+(w-padding)+",0)")
 	    .call(yAxisei);
 	svg.append("text")
-	    .attr("class","axis-label")
+	    .attr("class","axislabel")
 	    .attr("transform", "translate("+(w-margin)+","+0.5*h+") rotate(90)")
 	    .attr("x",0)
 	    .attr("y",0)
