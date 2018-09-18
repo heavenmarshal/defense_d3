@@ -1,5 +1,5 @@
-var w = 650;
-var h = 650;
+var w = 800;
+var h = 700;
 var padding = 70;
 var margin = 15;
 
