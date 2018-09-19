@@ -1,7 +1,7 @@
 var w = 800;
 var h = 700;
 var padding = 70;
-var margin = 15;
+var margin = 18;
 
 var rowDev = function(d){
     return {feasible: +d.feasible, fdev: +d.fdev}
@@ -16,7 +16,8 @@ var rowEI = function(d){
 // initial figure
 
 var svg = d3.select("body").append("svg").attr("height",h).attr("width",w);
-
+svg.append("image").attr("xlink:href","legend.jpg").attr("width",290)
+    .attr("x",100)
 var xScale = d3.scale.linear()
     .domain([0,1])
     .range([padding, w-padding]);
@@ -32,7 +33,7 @@ var yloc = function(i,citer,beforeval,afterval){
 var tripos, labpos;
 
 d3.csv("devdata.csv",rowDev, function(data){
-    
+
     yScale = d3.scale.linear()
 	.domain([0,
 		 d3.max(data, function(d){return d.fdev;})])
@@ -44,7 +45,7 @@ d3.csv("devdata.csv",rowDev, function(data){
 	.datum(data)
 	.attr("class","line")
 	.attr("d",line);
-    
+
     var xAxis = d3.svg.axis().scale(xScale).ticks(5).orient("bottom");
     var yAxis = d3.svg.axis().scale(yScale).ticks(5).orient("left");
     svg.append("g")
@@ -115,7 +116,7 @@ d3.csv("devdata.csv",rowDev, function(data){
 	    .attr("x",0)
 	    .attr("y",0)
 	    .attr("text-anchor","middle")
-	    .text("EI");     
+	    .text("EI");
     });
 });
 
@@ -135,7 +136,7 @@ svg.on("click",function(){
 	var lineEIc = d3.svg.line()
 	    .x(function(d){return xScale(d.feasible);})
 	    .y(function(d){return yScaleEIc(d.ei);})
-	
+
 	svg.select(".lineEI")
 	    .datum(data).transition().duration(1000).attr("d",lineEIc);
 	svg.select(".right").transition().duration(1000).call(yAxiseic);
